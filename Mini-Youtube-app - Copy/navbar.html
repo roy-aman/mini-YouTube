@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b83e661df4.js" crossorigin="anonymous"></script>
+    <title>Youtube</title>
+    <style>
+        #menu{
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto;
+        }
+        
+        #firstMenu{
+            display: flex;
+            gap: 30px;
+            margin: 3px 20px;
+
+        }
+        #firstMenu img{
+            width: 50%;
+            height: 35px;
+        }
+        #middleMenu{
+            height: 35px;
+            margin: 3px 40px;
+
+        }
+        #middleMenu>input{
+            width: 80%;
+            height: 35px;
+        }
+        #middleMenu>button{
+            height: 35px;
+        }
+        .fa-solid fa-microphone{
+            height: 35px;
+        }
+
+        #lastMenu{
+            display: flex;
+            gap: 30px;
+            /* color: black; */
+            margin: 3px 40px;
+            flex-direction: row-reverse;
+            
+        }
+        #lastMenu img{
+            height: 42px;
+            margin-top: -5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- starting of menu part -->
+    <div id="menu">
+        <div id="firstMenu">
+            <i class="fa-solid fa-bars fa-2x"></i>
+            <img src="./Images/youtube-final.jpg" alt="" >
+        </div>
+        <div id="middleMenu">
+            <input type="search" id="search" placeholder="search" >
+            <button onclick="serachMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <i class="fa-solid fa-microphone"></i>
+         </div>
+        <div id="lastMenu">
+            <i class="fa-solid fa-user fa-2x"></i>   
+            <img src="./Images/grid.png" alt="" >      
+            <i class="fa-solid fa-bell fa-2x "></i>
+            <i class="fa-solid fa-circle-plus fa-2x"></i>
+        </div>
+    </div>
+    <!-- ending of menu part -->
+
+    <!-- show the videos -->
+    <div id="videoContainer">
+
+    </div>
+</body>
+</html>
