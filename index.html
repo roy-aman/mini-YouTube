@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b83e661df4.js" crossorigin="anonymous"></script>
+    <title>Youtube</title>
+    <style>
+        #menu{
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: auto;
+        }
+        #menu>div{
+            border: 2px solid black;
+        }
+        #firstMenu{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <!-- starting of menu part -->
+    <div id="menu">
+        <div id="firstMenu">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-brands fa-youtube fa-1x"></i>
+        </div>
+        <div id="middleMenu">
+            <input type="search" id="search" placeholder="search" >
+            <button onclick="serachMovies()"><i class="fa-solid fa-magnifying-glass"></i></button>
+         </div>
+        <div id="lastMenu">
+            <i class="fa-solid fa-circle-plus"></i>
+             <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-user"></i>            
+        </div>
+    </div>
+    <!-- ending of menu part -->
+
+    <!-- show the videos -->
+    <div id="videoContainer">
+
+    </div>
+</body>
+</html>
+
+<script>
+    var search_result_div = document.querySelector("#search");
+    const serachMovies = async () => {
+        try {
+            let inp = document.getElementById("search").value;
+            let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${inp}&key=AIzaSyDdH-sFDEIDXJbtcWo2zn4_GsV8eZflLQg&maxResults=50`);
+            let data = await res.json();
+            let video = data.items;
+            appendVideo(video);
+            console.log("data", data);
+        } catch (error) {
+            console.log("error");
+        };
+    }
+
+
+    const appendVideo = (data) => {
+        search_result_div.innerHTML = null;
+        try {
+        data.forEach(({snippet:{title},id:{videoId}})  => {
+            
+                let div = document.createElement("div");
+
+                let name = document.createElement("p");
+
+                name.innerText = title;
+
+                let iframe = document.createElement("iframe");
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                iframe.style.width = "100%";
+                iframe.allow = 'fullscreen';
+                div.append(iframe,name);
+                search_result_div.append(div);
+            });
+            } catch (error) {
+                console.log("error");
+            }
+    }
+    // img url
+    // "https://www.youtube.com/embed/RPvzhQ0MfhM"
+</script>
