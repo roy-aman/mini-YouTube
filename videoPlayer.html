@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #videoPlayer{
+            width: 50%;
+            margin: 100px auto;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!-- <iframe src="" frameborder="0"></iframe> -->
+    <div id="videoPlayer">
+
+    </div>
+</body>
+</html>
+
+<script >
+let player =document.querySelector("#videoPlayer");
+ 
+const appendToPlayer = (iframe)=>{
+    console.log("noe you are in player")
+    player.append(iframe);
+}
+
+</script>
